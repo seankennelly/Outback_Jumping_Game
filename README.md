@@ -8,7 +8,7 @@
 * Randomly generated obstacles
 * Running score
 
-## Features To Be Implement in Version 2
+## Features To Implement in Version 2
 * Button to reset game
 * Animated obstacles
 * Score count for how many obstacles avoided
