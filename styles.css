@@ -68,13 +68,11 @@ header {
 .character {
   position: relative;
   top: 150px;
-  outline: green 1px solid;
 }
 
 .character img {
   width: 250px;
   height: auto;
-  outline: red 1px solid;
 }
 
 @keyframes jump {
@@ -101,11 +99,12 @@ header {
 
 .enemy {
   position: relative;
-  top: 85px;
+  top: 55px;
   left: 1000px;
   width: 50px;
-  height: 50px;
-  background-color: blue;
+  height: auto;
+  /* background-color: blue; */
+  border: blue px solid;
 }
 
 .animate-enemy {
