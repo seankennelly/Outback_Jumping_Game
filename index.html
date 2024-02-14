@@ -13,31 +13,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <title>Jumping Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <title>Outback Jumper</title>
 </head>
 
 <body>
+  
   <header>
-    <h1>Jumping Game</h1>
+    <h1>Outback Jumper</h1>
     <button class="start-button">Start</button>
     <p class="start-timer"></p>
   </header>
-
   <section class="game">
     <div class="background"></div>
-    <div class="game-pieces">
-      <div class="character">
-        <img id="kangaroo" src="./images/kangaroo_still.png" alt="A jumping kangaroo">
-      </div>
-      <div class="enemy">
-      </div>
+    <div class="character">
+      <img id="kangaroo" src="./images/kangaroo_still.png" alt="A jumping kangaroo">
     </div>
+    <div class="enemy"></div>
+    <div class="game-over"></div>
+    <p class="score">0</p>
   </section>
-
-  <section class="results">
-
-  </section>
-
 
   <script src="script.js"></script>
 </body>

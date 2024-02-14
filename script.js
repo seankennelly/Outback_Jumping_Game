@@ -1,14 +1,15 @@
 const gamePage = document.querySelector('html');
 const startButton = document.querySelector('.start-button');
 const startTimerText = document.querySelector('.start-timer');
-const gameContainer = document.querySelector('.game');
 const enemy = document.querySelector('.enemy');
 const movingBackground = document.querySelector('.background');
 const character = document.querySelector('.character');
 const kangaroo = document.querySelector('#kangaroo');
-const gameOverTextContainer = document.createElement('p');
-gameOverTextContainer.innerText = "Game Over!";
-gameOverTextContainer.classList.add('game-over');
+const gameOverTextContainer = document.querySelector('.game-over');
+const gameOverText = document.createElement('p');
+gameOverText.innerText = "Game Over!";
+const scoreDisplay = document.querySelector('.score');
+const finalScoreDisplay = document.createElement('p');
 
 const obstacles = [
   { name: 'toad', imgSrc: 'toad.png' },
@@ -17,9 +18,6 @@ const obstacles = [
   { name: 'scorpion', imgSrc: 'scorpion.png' },
   { name: 'snake', imgSrc: 'snake.png' },
 ];
-
-let gameOver = false; // Still needed?
-
 
 let obstacleImg;
 let obstacleInterval;
@@ -36,7 +34,6 @@ const generateObstacle = () => {
 
 const changeObstacle = () => {
   obstacleInterval = setInterval(generateObstacle, 1500);
-  console.log("changeObstacle called");
 };
 
 const stopObstacleChange = () => {
@@ -44,11 +41,11 @@ const stopObstacleChange = () => {
 };
 
 const jump = () => {
-  if (character.classList != 'animate') {
-    character.classList.add('animate');
+  if (character.classList != 'animate-character') {
+    character.classList.add('animate-character');
   }
   setTimeout(function () {
-    character.classList.remove('animate');
+    character.classList.remove('animate-character');
   }, 400);
 };
 
@@ -66,7 +63,8 @@ const runTimers = () => {
   // Runs animations for background and game character
   const elementsMove = setTimeout(function () {
     movingBackground.classList.add('animate-background');
-    kangaroo.src = './images/kangaroo.gif'
+    kangaroo.src = './images/kangaroo.gif';
+    keepScore();
   }, 4000);
   // Starts enemy movement
   const enemyMove = setTimeout(function () {
@@ -76,7 +74,21 @@ const runTimers = () => {
   const removeTimer = setTimeout(function () {
     startTimerText.remove();
   }, 5000);
-  console.log("runTimers called");
+};
+
+let scoreInterval;
+let playerScore = 0;
+const addToScore = () => {
+  playerScore++;
+  scoreDisplay.innerText = `${playerScore}`;
+};
+
+const keepScore = () => {
+  scoreInterval = setInterval(addToScore , 100);
+};
+
+const stopScore = () => {
+  clearInterval(scoreInterval);
 };
 
 const checkCollision = () => setInterval(function () {
@@ -93,18 +105,19 @@ const checkCollision = () => setInterval(function () {
     enemy.style.animation = 'none';
     kangaroo.src = './images/kangaroo_still.png';
     movingBackground.style.animationPlayState = 'paused';
-    gameContainer.append(gameOverTextContainer);
-    gameOver = true; // Still needed?
-    stopObstacleChange();
+    gameOverTextContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+    gameOverTextContainer.append(gameOverText);
+    finalScoreDisplay.innerText = `Your score is ${playerScore}`;
+    gameOverTextContainer.append(finalScoreDisplay);
+    stopObstacleChange();    
+    stopScore();
   };
 }, 100);
-
 
 const gameStart = () => {
   runTimers();
   changeObstacle();
   checkCollision();
-  console.log("gameStart called");
   startButton.setAttribute('disabled', '');
 };
 
@@ -117,10 +130,3 @@ gamePage.addEventListener('keyup', event => {
     jump();
   };
 });
-
-
-
-
-
-
-
