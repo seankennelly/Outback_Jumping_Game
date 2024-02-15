@@ -9,16 +9,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  max-width: 100vw;
   font-family: "Permanent Marker", cursive;
-  font-weight: 400;
-  font-style: normal;
 }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
 }
 
 .start-button {
@@ -61,51 +62,42 @@ header {
 
   100% {
     transform: translate3d(-960px, 0, 0);
-    /* The image width */
   }
 }
 
 .character {
   position: relative;
-  top: 150px;
-  outline: green 1px solid;
+  top: 130px;
 }
 
 .character img {
   width: 250px;
   height: auto;
-  outline: red 1px solid;
 }
 
 @keyframes jump {
   0% {
     top: 150px;
   }
-
   30% {
     top: 50px;
   }
-
   70% {
     top: 50px;
   }
-
   100% {
     top: 150px;
   }
 }
 
-.animate {
+.animate-character {
   animation: jump 500ms;
 }
 
 .enemy {
   position: relative;
-  top: 85px;
+  top: 55px;
   left: 1000px;
-  width: 50px;
-  height: 50px;
-  background-color: blue;
 }
 
 .animate-enemy {
@@ -116,7 +108,6 @@ header {
   0% {
     left: 950px;
   }
-
   100% {
     left: -100px;
   }
@@ -128,7 +119,26 @@ header {
   left: 300px;
   padding: 1rem;
   font-size: 4rem;
-  background-color: rgba(255,255,255,0.5);
   border-radius: 5px;
+  text-align: center;
   z-index: 2;
+}
+
+.game-over p:last-child{
+  border: 1px dashed black;
+  border-radius: 5px;
+  background-color: #D38954;
+  font-size: 2rem;
+} 
+
+.score {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-family: "Inconsolata", monospace;
+  font-size: 1.5rem;
+  background-color: rgba(211, 137, 84, 0.5);
+  border-radius: 5px;
 }
