@@ -1,5 +1,5 @@
 # Jumping Game
-  https://seankennelly.github.io/kreativstorm_jumping_game/
+https://seankennelly.github.io/Outback_Jumping_Game/
 
 ## Features
 * CSS animated scrolling background
